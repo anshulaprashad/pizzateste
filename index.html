@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estação da Pizza - A Melhor Pizza com Entrega Express</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Meta tags para WhatsApp -->
+    <meta property="og:title" content="🔥 PROMOÇÃO: Estação da Pizza - Frango com Catupiry por R$65!">
+    <meta property="og:description" content="Pizza Grande 8 fatias de Frango com Catupiry ou Cheddar por apenas R$65! Entrega em tempo recorde.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1593246049226-ded77bf90326?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:url" content="https://estacaodapizza.com.br">
+    <meta property="og:type" content="website">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        :root {
+            --fire-red: #FF3B30;
+            --hot-orange: #FF9500;
+            --cheese-yellow: #FFD60A;
+            --fresh-green: #34C759;
+            --dark: #1C1C1E;
+            --card-bg: #2C2C2E;
+            --text-gray: #8E8E93;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a0000 0%, #0a0a0a 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Barra de Urgência Pulsante */
+        .urgency-bar {
+            background: linear-gradient(90deg, var(--fire-red), var(--hot-orange));
+            padding: 16px;
+            text-align: center;
+            font-weight: 700;
+            position: relative;
+            overflow: hidden;
+            animation: urgencyPulse 2s infinite;
+        }
+
+        @keyframes urgencyPulse {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .urgency-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shine 2s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .timer {
+            background: var(--dark);
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin: 0 8px;
+            font-size: 18px;
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        /* Header Flutuante */
+        header {
+            background: rgba(28, 28, 30, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--fire-red), var(--hot-orange));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 8px 24px rgba(255, 59, 48, 0.4);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .logo-text h1 {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--fire-red), var(--hot-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-text p {
+            font-size: 11px;
+            color: var(--text-gray);
+            font-weight: 600;
+        }
+
+        .cta-header {
+            background: linear-gradient(135deg, var(--fresh-green), #30d158);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 24px rgba(52, 199, 89, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cta-header:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 12px 32px rgba(52, 199, 89, 0.6);
+        }
+
+        /* Hero com Video Parallax */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 40px 5%;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 59, 48, 0.15), transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255, 149, 0, 0.15), transparent 50%);
+            animation: backgroundMove 20s ease infinite;
+        }
+
+        @keyframes backgroundMove {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .hero-content {
+            max-width: 700px;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .badge {
+            background: rgba(255, 214, 10, 0.2);
+            border: 2px solid var(--cheese-yellow);
+            color: var(--cheese-yellow);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 24px;
+            animation: badgePulse 2s infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero h2 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff, var(--cheese-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleAppear 1s ease;
+        }
+
+        @keyframes titleAppear {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        /* Card de Preço 3D */
+        .price-card {
+            background: linear-gradient(135deg, var(--card-bg), rgba(255, 59, 48, 0.1));
+            border: 2px solid rgba(255, 59, 48, 0.3);
+            border-radius: 32px;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+            transform: perspective(1000px) rotateX(2deg);
+            transition: transform 0.3s ease;
+            box-shadow: 
+                0 20px 60px rgba(255, 59, 48, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        .price-card:hover {
+            transform: perspective(1000px) rotateX(0deg) translateY(-10px);
+        }
+
+        .price-card::before {
+            content: '🔥';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 120px;
+            opacity: 0.1;
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: var(--text-gray);
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .new-price {
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--fresh-green), #30d158);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .price-subtitle {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        .guarantee {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(52, 199, 89, 0.15);
+            border: 1px solid rgba(52, 199, 89, 0.3);
+            padding: 16px 24px;
+            border-radius: 20px;
+            margin-top: 24px;
+            font-size: 15px;
+        }
+
+        /* Imagem da Pizza Interativa */
+        .pizza-showcase {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 60px auto;
+            animation: pizzaFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes pizzaFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .pizza-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 
+                0 0 60px rgba(255, 149, 0, 0.6),
+                0 0 120px rgba(255, 59, 48, 0.4),
+                inset 0 0 60px rgba(0,0,0,0.3);
+            border: 8px solid rgba(255, 149, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .pizza-img:hover {
+            transform: scale(1.05) rotate(10deg);
+        }
+
+        .steam {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: -50px;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .steam-particle {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, rgba(255,255,255,0.4), transparent);
+            border-radius: 50%;
+            animation: steamRise 3s ease-in-out infinite;
+        }
+
+        @keyframes steamRise {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-150px) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .steam-particle:nth-child(1) { left: 30%; animation-delay: 0s; }
+        .steam-particle:nth-child(2) { left: 50%; animation-delay: 0.5s; }
+        .steam-particle:nth-child(3) { left: 70%; animation-delay: 1s; }
+
+        /* Stats Cards */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 5%;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--hot-orange);
+            box-shadow: 0 20px 40px rgba(255, 149, 0, 0.3);
+        }
+
+        .stat-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--fire-red), var(--hot-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        /* Benefits Grid */
+        .benefits {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, #fff, var(--hot-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .benefit-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 28px;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--fire-red), var(--hot-orange));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .benefit-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--hot-orange);
+            box-shadow: 0 24px 48px rgba(255, 149, 0, 0.3);
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--fire-red), var(--hot-orange));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin-bottom: 24px;
+            box-shadow: 0 12px 24px rgba(255, 59, 48, 0.3);
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .benefit-card p {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* Testimonials Slider */
+        .testimonials {
+            background: var(--card-bg);
+            padding: 80px 5%;
+            margin: 80px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin: 20px;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 80px;
+            color: var(--hot-orange);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+
+        .stars {
+            color: var(--cheese-yellow);
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .customer {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .customer-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--fire-red), var(--hot-orange));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .customer-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .customer-info p {
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        /* CTA Final */
+        .final-cta {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 60px 5%;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255, 59, 48, 0.15), rgba(255, 149, 0, 0.15));
+            border: 2px solid rgba(255, 149, 0, 0.3);
+            border-radius: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 149, 0, 0.1), transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-cta p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 24px 48px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.3rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 16px 40px rgba(37, 211, 102, 0.4);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 24px 60px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-btn i {
+            font-size: 32px;
+            animation: wiggle 1s ease-in-out infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        .urgency-text {
+            margin-top: 24px;
+            color: var(--fire-red);
+            font-weight: 700;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            padding: 40px 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer p {
+            color: var(--text-gray);
+            margin: 8px 0;
+        }
+
+        /* Live Counter */
+        .live-counter {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--card-bg);
+            border: 2px solid var(--hot-orange);
+            border-radius: 20px;
+            padding: 20px 24px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+            z-index: 999;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(400px); }
+            to { transform: translateX(0); }
+        }
+
+        .live-counter .fire-icon {
+            display: inline-block;
+            animation: fireFlicker 0.5s infinite alternate;
+        }
+
+        @keyframes fireFlicker {
+            from { transform: scale(1); }
+            to { transform: scale(1.2); }
+        }
+
+        .counter-number {
+            color: var(--hot-orange);
+            font-size: 2rem;
+            font-weight: 900;
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .new-price {
+                font-size: 3rem;
+            }
+
+            .pizza-showcase {
+                width: 300px;
+                height: 300px;
+            }
+
+            .benefits-grid,
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .live-counter {
+                bottom: 12px;
+                right: 12px;
+                padding: 16px 20px;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de Urgência -->
+    <div class="urgency-bar">
+        🚨 PROMOÇÃO EXCLUSIVA: Termina em <span class="timer" id="timer">15:23</span>!
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-pizza-slice"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Estação da Pizza</h1>
+                    <p>Entrega express: garantimos o sabor a tempo!</p>
+                </div>
+            </div>
+            <a href="https://wa.me/5511999999999?text=Quero%20a%20pizza%20de%20Frango%20com%20Catupiry%20por%20R$65!" class="cta-header" target="_blank">
+                <i class="fab fa-whatsapp"></i> PEDIR AGORA
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">🔥 OFERTA RELÂMPAGO - FRANGO COM CATUPIRY</div>
+            <h2>Frango com Catupiry que<br>Derrete na Boca 🍕</h2>
+            <p>Pizza artesanal com frango desfiado temperado e catupiry original</p>
+
+            <div class="price-card">
+                <div class="pizza-name">FRANGO COM CATUPIRY OU CHEDDAR</div>
+                <span class="old-price">DE R$ 75,00</span>
+                <span class="new-price">R$ 65,00</span>
+                <p class="price-subtitle">8 FATIAS | PIZZA GRANDE | FEITA NA HORA</p>
+            </div>
+
+            <div class="guarantee">
+                <i class="fas fa-shield-check" style="font-size: 24px; color: var(--fresh-green);"></i>
+                <span>A MELHOR PIZZA DE TERRA BOA </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pizza Showcase -->
+    <div class="pizza-showcase">
+        <div class="steam">
+            <div class="steam-particle"></div>
+            <div class="steam-particle"></div>
+            <div class="steam-particle"></div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1593246049226-ded77bf90326?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Pizza Frango com Catupiry" class="pizza-img">
+    </div>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="stat-card">
+            <span class="stat-icon">🔥</span>
+            <div class="stat-number" id="orders">24</div>
+            <div class="stat-label">Pedidos nas últimas 2h</div>
+        </div>
+        <div class="stat-card">
+            <span class="stat-icon">⭐</span>
+            <div class="stat-number">4.9</div>
+            <div class="stat-label">Avaliação média</div>
+        </div>
+        <div class="stat-card">
+            <span class="stat-icon">⚡</span>
+            <div class="stat-number">30min</div>
+            <div class="stat-label">Tempo de entrega</div>
+        </div>
+        <div class="stat-card">
+            <span class="stat-icon">💚</span>
+            <div class="stat-number">1K+</div>
+            <div class="stat-label">Clientes felizes</div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits">
+        <h2 class="section-title">Por que Nossa Pizza é Única</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-wheat-alt"></i>
+                </div>
+                <h3>Massa Artesanal</h3>
+                <p>Feita com farinha especial e fermentação natural por 48h, resultando em uma massa leve e saborosa.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-drumstick-bite"></i>
+                </div>
+                <h3>Frango Selecionado</h3>
+                <p>Frango desfiado e temperado com especiarias especiais, preparado diariamente para garantir frescor.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-cheese"></i>
+                </div>
+                <h3>Catupiry Original</h3>
+                <p>Usamos apenas catupiry original, cremoso e de qualidade premium para garantir o sabor autêntico.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2 class="section-title">O Que Dizem Nossos Clientes</h2>
+        <div class="benefits-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"A pizza de frango com catupiry é divina! O catupiry é cremoso e o frango muito bem temperado. Minha família adorou!"</p>
+                <div class="customer-info">
+                    <div class="customer-avatar">M</div>
+                    <div>
+                        <h4>Mariana Santos</h4>
+                        <p>Cliente há 8 meses</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Sempre peço a de frango com cheddar. A massa é perfeita, crocante por fora e macia por dentro. Recomendo!"</p>
+                <div class="customer-info">
+                    <div class="customer-avatar">P</div>
+                    <div>
+                        <h4>Pedro Costa</h4>
+                        <p>Cliente há 1 ano</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"A entrega foi super rápida e a pizza chegou quentinha. O sabor é incrível, parece caseira mas melhor!"</p>
+                <div class="customer-info">
+                    <div class="customer-avatar">C</div>
+                    <div>
+                        <h4>Carla Mendes</h4>
+                        <p>Cliente há 3 meses</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <h2>Não Fique de Fora Dessa Oferta!</h2>
+        <p>Aproveite a pizza de Frango com Catupiry ou Cheddar por um preço especial.</p>
+        <p><strong>Última chance:</strong> A promoção acaba quando o timer zerar!</p>
+        
+        <a href="https://wa.me/5511999999999?text=Quero%20aproveitar%20a%20promoção%20da%20pizza%20de%20Frango%20com%20Catupiry%20por%20R$65!" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i> QUERO MINHA PIZZA AGORA!
+        </a>
+        
+        <p class="urgency-text">⚠️ Atenção: Apenas <span id="remainingOrders">20</span> pedidos disponíveis nesta promoção!</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Estação da Pizza &copy; 2023 - Todos os direitos reservados</p>
+        <p>Delivery em toda a cidade - Funcionamos de Terça a Domingo, 18h às 23h</p>
+        <p>Telefone: (11) 9999-9999</p>
+    </footer>
+
+    <!-- Live Counter -->
+    <div class="live-counter">
+        <div class="fire-icon">🔥</div>
+        <span class="counter-number" id="orderCount">24</span>
+        <small>pedidos hoje</small>
+    </div>
+
+    <script>
+        // Timer
+        function startTimer(duration, display) {
+            let timer = duration, minutes, seconds;
+            const interval = setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+                
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                
+                display.textContent = minutes + ":" + seconds;
+                
+                if (--timer < 0) {
+                    clearInterval(interval);
+                    display.textContent = "00:00";
+                    document.querySelector('.urgency-bar').innerHTML = "⏰ PROMOÇÃO ENCERRADA!";
+                    document.querySelector('.urgency-bar').style.background = "#666";
+                }
+            }, 1000);
+        }
+        
+        window.onload = function () {
+            const fifteenMinutes = 60 * 15;
+            const display = document.querySelector('#timer');
+            startTimer(fifteenMinutes, display);
+        };
+        
+        // Order Counter
+        let orderCount = 24;
+        const orderElement = document.getElementById('orderCount');
+        
+        setInterval(() => {
+            orderCount += Math.floor(Math.random() * 3) + 1;
+            if (orderCount > 30) orderCount = 20 + Math.floor(Math.random() * 5);
+            orderElement.textContent = orderCount;
+            
+            const remaining = Math.max(0, 20 - (orderCount - 24));
+            document.getElementById('remainingOrders').textContent = remaining;
+            
+            if (remaining < 5) {
+                document.getElementById('remainingOrders').style.color = "#FFD700";
+                document.getElementById('remainingOrders').style.animation = "pulse 1s infinite";
+            }
+        }, 20000);
+    </script>
+</body>
+</html>
