@@ -1,3 +1,27 @@
+Claro! Abaixo está a **versão atualizada do seu código HTML** com todas as alterações solicitadas:
+
+---
+
+### ✅ Alterações feitas:
+
+1. **Botão "QUERO MINHA PROMOÇÃO AGORA!"** foi redimensionado para ter o **mesmo tamanho do botão "PEDIR AGORA"** (altura, padding, font-size, etc.).
+2. **Imagem de pré-visualização do WhatsApp** atualizada para:
+   ```html
+   https://anshulaprashad.github.io/pizzateste/image212.jpg
+   ```
+   — e essa imagem **não aparece na página web**, só nas previews do WhatsApp.
+3. **Removido todo o conteúdo relacionado a "frango com catupiry"**.
+4. **Substituído o texto da pré-visualização (OG tags)** para:
+   ```
+   PIZZA GRANDE + BROTO DE CHOCOLATE 🎁 GRÁTIS! 🎁
+   ```
+   — com gatilhos emocionais, emojis e foco no brinde de chocolate.
+
+---
+
+### 📝 Código Atualizado:
+
+```html
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,10 +29,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estação da Pizza - Promoção: Pizza Grande + Brotinho Doce Grátis!</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Meta tags para WhatsApp -->
-    <meta property="og:title" content="🍕 PROMOÇÃO: Pizza Grande + Brotinho Doce Grátis por R$55!">
-    <meta property="og:description" content="Na compra de qualquer pizza grande, leve um brotinho de chocolate ou brigadeiro GRÁTIS! Apenas R$55,00. Entrega rápida.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1593246049226-ded77bf90326?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80">
+    
+    <!-- Meta tags para WhatsApp (com nova imagem e novo texto) -->
+    <meta property="og:title" content="PIZZA GRANDE + BROTO DE CHOCOLATE 🎁 GRÁTIS! 🎁">
+    <meta property="og:description" content="Na compra de qualquer pizza grande, ganhe um BROTO DE CHOCOLATE 100% GRÁTIS! 🍫✨ Só hoje por R$55! Corra antes que acabe! ⏳">
+    <meta property="og:image" content="https://anshulaprashad.github.io/pizzateste/image212.jpg">
     <meta property="og:url" content="https://estacaodapizza.com.br">
     <meta property="og:type" content="website">
     
@@ -626,37 +651,31 @@
             z-index: 1;
         }
 
+        /* ✅ Ajuste: Botão final com mesmo tamanho do botão do header */
         .whatsapp-btn {
             background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
-            padding: 24px 48px;
-            border-radius: 40px;
+            padding: 14px 28px; /* Igual ao .cta-header */
+            border-radius: 30px; /* Igual ao .cta-header */
             text-decoration: none;
-            font-weight: 800;
-            font-size: 1.3rem;
+            font-weight: 700; /* Igual ao .cta-header */
+            font-size: 15px; /* Igual ao .cta-header */
             display: inline-flex;
             align-items: center;
-            gap: 16px;
-            box-shadow: 0 16px 40px rgba(37, 211, 102, 0.4);
+            gap: 8px; /* Igual ao .cta-header */
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             z-index: 1;
         }
 
         .whatsapp-btn:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 24px 60px rgba(37, 211, 102, 0.6);
+            transform: translateY(-2px) scale(1.05); /* Igual ao .cta-header */
+            box-shadow: 0 12px 32px rgba(37, 211, 102, 0.6);
         }
 
         .whatsapp-btn i {
-            font-size: 32px;
-            animation: wiggle 1s ease-in-out infinite;
-        }
-
-        @keyframes wiggle {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(-10deg); }
-            75% { transform: rotate(10deg); }
+            font-size: 20px; /* Ajustado para combinar visualmente */
         }
 
         .urgency-text {
@@ -847,7 +866,7 @@
                     <i class="fas fa-pizza-slice"></i>
                 </div>
                 <h3>Pizza Grande Qualquer Sabor</h3>
-                <p>Escolha seu sabor favorito: calabresa, margherita, portuguesa, frango, etc. Tudo fresco!</p>
+                <p>Escolha seu sabor favorito: calabresa, margherita, portuguesa... Tudo fresco!</p>
             </div>
 
             <div class="benefit-card">
@@ -999,4 +1018,11 @@
     </script>
 </body>
 </html>
+```
 
+---
+
+✅ **Pronto para usar!**  
+Agora sua landing page está otimizada para gerar mais cliques no WhatsApp, com uma preview irresistível e botão padronizado.
+
+Se precisar de mais ajustes (como trocar sabores, adicionar WhatsApp com mensagem diferente, etc.), é só avisar! 🍕✨
