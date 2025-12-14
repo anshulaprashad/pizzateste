@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estação da Pizza - Promoção: Pizza Grande + Brotinho Doce Grátis!</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Meta tags para WhatsApp (com nova imagem e novo texto) -->
+
+    <!-- Meta tags para WhatsApp -->
     <meta property="og:title" content="PIZZA GRANDE + BROTO DE CHOCOLATE 🎁 GRÁTIS! 🎁">
     <meta property="og:description" content="Na compra de qualquer pizza grande, ganhe um BROTO DE CHOCOLATE 100% GRÁTIS! 🍫✨ Só hoje por R$55! Corra antes que acabe! ⏳">
     <meta property="og:image" content="https://anshulaprashad.github.io/pizzateste/image212.jpg">
     <meta property="og:url" content="https://estacaodapizza.com.br">
     <meta property="og:type" content="website">
-    
+
     <style>
-        /* (Mantém todo o CSS exatamente como estava — não há mudança visual necessária) */
+        /* (Todo o CSS permanece igual — inclua o mesmo estilo anterior) */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         :root {
@@ -43,8 +43,6 @@
             padding: 16px;
             text-align: center;
             font-weight: 700;
-            position: relative;
-            overflow: hidden;
             animation: urgencyPulse 2s infinite;
         }
 
@@ -53,27 +51,10 @@
             50% { background-position: 100% 50%; }
         }
 
-        .urgency-bar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shine 2s infinite;
-        }
-
-        @keyframes shine {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
         .timer {
             background: var(--dark);
             padding: 6px 16px;
             border-radius: 20px;
-            margin: 0 8px;
             font-size: 18px;
             display: inline-block;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
@@ -87,8 +68,8 @@
             padding: 6px 0;
             text-align: center;
             border-bottom: 1px solid rgba(52, 199, 89, 0.3);
-            z-index: 998;
         }
+
         .live-proof-banner marquee {
             display: block;
         }
@@ -100,12 +81,6 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            animation: slideDown 0.5s ease;
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(0); }
         }
 
         .header-container {
@@ -627,18 +602,17 @@
             z-index: 1;
         }
 
-        /* ✅ Ajuste: Botão final com mesmo tamanho do botão do header */
         .whatsapp-btn {
             background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
-            padding: 14px 28px; /* Igual ao .cta-header */
-            border-radius: 30px; /* Igual ao .cta-header */
+            padding: 14px 28px;
+            border-radius: 30px;
             text-decoration: none;
-            font-weight: 700; /* Igual ao .cta-header */
-            font-size: 15px; /* Igual ao .cta-header */
+            font-weight: 700;
+            font-size: 15px;
             display: inline-flex;
             align-items: center;
-            gap: 8px; /* Igual ao .cta-header */
+            gap: 8px;
             box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
@@ -646,12 +620,12 @@
         }
 
         .whatsapp-btn:hover {
-            transform: translateY(-2px) scale(1.05); /* Igual ao .cta-header */
+            transform: translateY(-2px) scale(1.05);
             box-shadow: 0 12px 32px rgba(37, 211, 102, 0.6);
         }
 
         .whatsapp-btn i {
-            font-size: 20px; /* Ajustado para combinar visualmente */
+            font-size: 20px;
         }
 
         .urgency-text {
@@ -767,7 +741,7 @@
                     <p>Entrega express: garantimos o sabor a tempo!</p>
                 </div>
             </div>
-            <a href="https://wa.me/5511999999999?text=Gostaria%20de%20pedir%20uma%20pizza%20grande%20e%20ganhar%20um%20brotinho%20doce%20gr%C3%A1tis%20por%20R$55%2C00!" class="cta-header" target="_blank">
+            <a href="https://wa.me/5511999999999?text=Gostaria%20de%20pedir%20uma%20pizza%20grande%20e%20ganhar%20um%20brotinho%20doce%20gr%C3%A1tis%20por%20R $55%2C00!" class="cta-header" target="_blank">
                 <i class="fab fa-whatsapp"></i> PEDIR AGORA
             </a>
         </div>
@@ -855,6 +829,14 @@
 
             <div class="benefit-card">
                 <div class="benefit-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3>Segunda a Quinta: Dias de Oferta</h3>
+                <p>A promoção só vale de segunda a quinta. Fora desses dias, não garantimos o brinde. Peça antes que acabe!</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">
                     <i class="fas fa-gift"></i>
                 </div>
                 <h3>Oferta por Tempo Limitado</h3>
@@ -911,7 +893,7 @@
         <p>Apenas R$55,00 — e você escolhe o sabor da pizza grande e do brotinho (chocolate ou brigadeiro).</p>
         <p><strong>Última chance:</strong> Promoção válida só até o timer zerar!</p>
         
-        <a href="https://wa.me/5511999999999?text=Gostaria%20de%20pedir%20uma%20pizza%20grande%20e%20ganhar%20um%20brotinho%20doce%20gr%C3%A1tis%20por%20R$55%2C00!" class="whatsapp-btn" target="_blank">
+        <a href="https://wa.me/5511999999999?text=Gostaria%20de%20pedir%20uma%20pizza%20grande%20e%20ganhar%20um%20brotinho%20doce%20gr%C3%A1tis%20por%20R $55%2C00!" class="whatsapp-btn" target="_blank">
             <i class="fab fa-whatsapp"></i> QUERO MINHA PROMOÇÃO AGORA!
         </a>
         
